@@ -1,0 +1,17 @@
+{
+  "name": "rollup-plugin-postcss-treeshakeable",
+  "version": "1.0.0",
+  "keywords": [
+    "rollup-plugin",
+    "postcss"
+  ],
+  "description": "Enables treeshaking of modular CSS produced by PostCSS",
+  "main": "index.js",
+  "repository": "https://github.com/dferber90/rollup-plugin-postcss-treeshakeable",
+  "author": "Dominik Ferber <dominik.ferber+npm@gmail.com> (http://dferber.de/)",
+  "license": "MIT",
+  "dependencies": {
+    "common-tags": "1.8.0",
+    "rollup-pluginutils": "2.3.1"
+  }
+}
