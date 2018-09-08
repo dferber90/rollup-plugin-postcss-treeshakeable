@@ -34,6 +34,10 @@ The `postcssTreeshakeable` must appear after the `postcss` plugin.
 
 This package is experimental. A first test showed that the technique works, but it has not been tested on any big project yet.
 
+## Example
+
+Check out the `example` folder, and especially the [`example/README.md`](./example/README.md) walkthrough to see what this plugin does and follow it to see it in action.
+
 ## Gist
 
 This plugins transforms this code (which gets produced by `postcss` when importing a css module):

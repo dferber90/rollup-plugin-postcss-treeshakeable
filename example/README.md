@@ -146,6 +146,10 @@ This means that we didn't just get rid of the `Butler` component, but we also go
 
 ## Additional hints
 
+### Try disabling `rollup-plugin-postcss-treeshakeable`
+
+Go to `example/ui-library` and comment out the `postcssTreeshakeable()` plugin. Then build the ui-library and the application again, and you'll notice that the final bundle will still contain the styles of `Butler` (search for `.Butler`), even though it does not contain the `Butler` component (search for `I am Butler`).
+
 ### Building non-uglified code
 
 You can comment out the `new webpack.optimize.UglifyJsPlugin()` call in `example/application/config/webpack.config.prod.js` and rerun `yarn build` in `example/application`. If you then inspect the generated, bundle you'll see that the code is no longer removed. That's because we rely on `Uglify` to do dead code elimination. `Uglify` removes the code which is marked as unused by Webpack through a `/* unused harmony export Butler */` comment. You'll be able to see this comment instead then!
