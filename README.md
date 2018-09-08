@@ -2,7 +2,7 @@
 
 Enables treeshaking of modular CSS produced by `postcss`
 
-## Setup
+## Installation
 
 Install the package
 
@@ -29,6 +29,10 @@ export default {
 ```
 
 The `postcssTreeshakeable` must appear after the `postcss` plugin.
+
+## Disclaimer
+
+This package is experimental. A first test showed that the technique works, but it has not been tested on any big project yet.
 
 ## Gist
 
@@ -99,7 +103,7 @@ import styleInject from "<some-folder>/style-inject/dist/style-inject.es.js";
 styleInject(css);
 ```
 
-When you now bundle everything up with rollup, you end up with the following in your generated bundle:
+When you bundle this with with rollup, you end up with the following in your generated bundle:
 
 ```js
 function styleInject(css, ref) {
@@ -114,7 +118,7 @@ var Butler = function Butler(props) {
   return React.createElement(
     "div",
     {
-      className: styles().alfred
+      className: styles.alfred
     },
     "I am Butler"
   );
@@ -125,13 +129,13 @@ export { Butler /* other components */ };
 
 ### Treeshaking components
 
-If the consumer of your library now doesn't import `Butler`, but only imports the other components, then we don't need to keep `Butler` around.
+If the consumer of your library doesn't import `Butler`, but only imports the other components, then we don't need to keep `Butler` around.
 
 Treeshaking does exactly this and marks the `Butler` export as unused. Once consumers of the library you're building run dead code elimination (for example by running Uglify), `Butler` won't end up in their application bundle anymore.
 
 This is pretty great, however the styles of `Butler` would currently still end up in the produced bundle.
 
-### Treeshaking component styles
+### Treeshaking styles
 
 This plugin transforms the contents of `Butler.mod.css` into a representation which can be removed through treeshaking.
 
@@ -157,6 +161,8 @@ var styles = function styles() {
 };
 ```
 
+### What you'll be doing now
+
 We are not exporting an object of classnames anymore, but we're rather exporting a function returning that object. The function will add inject the styles the first time it gets called.
 
 The consumers of the CSS modules have to be adapted, as we're now exporting a function instead of an object:
@@ -167,6 +173,8 @@ import styles from "./Butler.mod.css";
 -const Butler = props => <div className={styles.alfred}>I am Butler</div>;
 +const Butler = props => <div className={styles().alfred}>I am Butler</div>;
 ```
+
+After applying this plugin and after rewriting the usage of imported CSS (by turning `styles` into `styles()`), your library consumers will benefit from treeshaking it!
 
 ### Why it works
 

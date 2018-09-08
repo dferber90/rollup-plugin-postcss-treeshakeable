@@ -1,0 +1,42 @@
+{
+  "name": "ui-library",
+  "version": "0.0.1-alpha",
+  "private": true,
+  "description": "A UI Library which consumers can treeshake",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "repository": "https://github.com/dferber90/zazu",
+  "author": "Dominik Ferber <dominik.ferber+npm@gmail.com> (http://dferber.de/)",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "echo \"Redacted for simplicity. Only the production build is possible. Run 'npm run build' instead.\" && exit 1",
+    "build": "rollup -c"
+  },
+  "private": false,
+  "dependencies": {
+    "classnames": "2.2.6"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.0.0",
+    "@babel/core": "7.0.0",
+    "@babel/polyfill": "7.0.0",
+    "@babel/preset-env": "7.0.0",
+    "@babel/preset-react": "7.0.0",
+    "babel-loader": "8.0.2",
+    "peer-deps-externals-webpack-plugin": "1.0.4",
+    "rollup-plugin-postcss-treeshakeable": "file:../..",
+    "react": "16.4.2",
+    "react-dom": "16.4.2",
+    "rollup": "0.65.2",
+    "rollup-plugin-babel": "4.0.3",
+    "rollup-plugin-cleaner": "0.2.0",
+    "rollup-plugin-copy": "0.2.3",
+    "rollup-plugin-postcss": "1.6.2",
+    "rollup-pluginutils": "2.3.1"
+  },
+  "peerDependencies": {
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0"
+  }
+}
