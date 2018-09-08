@@ -1,5 +1,5 @@
-import { stripIndent } from "common-tags";
-import { createFilter } from "rollup-pluginutils";
+const { stripIndent } = require("common-tags");
+const { createFilter } = require("rollup-pluginutils");
 
 const postcssTreeshakeable = (options = {}) => {
   const filter = createFilter(options.include, options.exclude);
@@ -101,4 +101,4 @@ const postcssTreeshakeable = (options = {}) => {
   };
 };
 
-export default postcssTreeshakeable;
+module.exports = postcssTreeshakeable;
